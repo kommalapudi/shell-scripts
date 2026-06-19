@@ -1,15 +1,15 @@
 #!/bin/bash
 
-STARTTIME=$(date)
+STARTTIME=$(date +%s)
 
 echo "Script executed at: $STARTTIME"
 
 sleep 5
 
-ENDTIME=$(date)
+ENDTIME=$(date +%s)
 
 echo "Script completed at: $ENDTIME"
 
-TOTALTIME=$(( $(date -d "$ENDTIME" +%s) - $(date -d "$STARTTIME" +%s) ))
+TOTALTIME=$(( ENDTIME - STARTTIME ))
 echo "Total execution time: $TOTALTIME seconds"
 

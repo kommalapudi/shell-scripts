@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PERSON1="PUTIN" #No space between variable name and equal sign
-PERSON2="TRUMP"
+PERSON2="ramesh"
 echo "$PERSON1:: hello $PERSON2, how are you?"
 echo "$PERSON2:: hi $PERSON1, I'm fine, thanks for asking!"
 echo "$PERSON1:: that's great to hear. What have you been up to lately?"

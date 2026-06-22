@@ -30,7 +30,8 @@ for package in $@; do   # sudo sh 14-loops.sh nginx mysql nodejs
     dnf install "$package" -y &>> "$LOGS_FILE"
     if [ $? -ne 0 ]; then
         echo "$package failed not installed, installing now"
-        exit 1
+        dnf install "$package" -y &>> "$LOGS_FILE"
+        VALIDATE $? "$package installation"
     else
         echo "$package already installed, skipping installation"
     fi

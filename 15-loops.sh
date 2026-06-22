@@ -33,5 +33,4 @@ for package in $@; do   # sudo sh 14-loops.sh nginx mysql nodejs
     else
         echo "$package already installed, skipping installation"
     fi
-    VALIDATE $? "$package"
 done

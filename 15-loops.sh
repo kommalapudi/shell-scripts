@@ -1,14 +1,12 @@
 #!/bin/bash
 
-
-
 #for i in {1..5}; do
 #    echo "Iteration $i"
 #done
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-scripts"
-LOGS_FILE="$LOGS_FOLDER/$(basename "$0").log"
+LOGS_FILE="$LOGS_FOLDER/$0.log"
 
 if [ "$USERID" -ne 0 ]; then
     echo "Please run as root" | tee -a "$LOGS_FILE"
@@ -27,9 +25,9 @@ VALIDATE(){
 }
 
 for package in $@; do   # sudo sh 14-loops.sh nginx mysql nodejs
-    dnf install "$package" -y &>> "$LOGS_FILE"
+    dnf list installed "$package" -y &>> "$LOGS_FILE"
     if [ $? -ne 0 ]; then
-        echo "$package failed not installed, installing now"
+        echo "$package not installed, installing now"
         dnf install "$package" -y &>> "$LOGS_FILE"
         VALIDATE $? "$package installation"
     else

@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-scripts"
-LOGS_FILE="$LOGS_FOLDER/$0.log"
+LOGS_FILE="/var/log/shell-scripts/$0.log"
 
 if [ $USERID -ne 0 ]; then
   echo "Please run as root"

@@ -2,14 +2,14 @@
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-scripts"
-LOGS_FILE="/var/log/shell-scripts/$0.log"
+LOGS_FILE="$LOGS_FOLDER/$(basename "$0").log"
 
-if [ $USERID -ne 0 ]; then
-  echo "Please run as root"
-  exit 1
+if [ "$USERID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
 fi
 
-mkdir -p $LOGS_FOLDER
+mkdir -p "$LOGS_FOLDER"
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
@@ -20,11 +20,11 @@ VALIDATE(){
     fi
 }
 
-dnf install nginx -y &>> $LOGS_FILE
+dnf install nginx -y &>> "$LOGS_FILE"
 VALIDATE $? "nginx"
 
-dnf install mysql -y &>> $LOGS_FILE
+dnf install mysql -y &>> "$LOGS_FILE"
 VALIDATE $? "mysql"
 
-dnf install nodejs -y &>> $LOGS_FILE
+dnf install nodejs -y &>> "$LOGS_FILE"
 VALIDATE $? "nodejs"
